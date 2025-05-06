@@ -14,13 +14,7 @@ export async function verifyValidLicense(
     next: NextFunction
 ) {
     try {
-        const unlocked = await license.isUnlocked();
-        if (!unlocked) {
-            return next(
-                createHttpError(HttpCode.FORBIDDEN, "License is not valid")
-            );
-        }
-
+        // Skip license validation
         return next();
     } catch (e) {
         return next(
